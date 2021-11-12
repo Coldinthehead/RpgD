@@ -5,6 +5,7 @@ library Debug
         static method onInit()
         {
             BJDebugMsg("hello");
+            BJDebugMsg("world");
         }
     }
 }
