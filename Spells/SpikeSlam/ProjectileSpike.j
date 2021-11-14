@@ -79,7 +79,6 @@ library ProjectileSpikeLib
         private method createVFX()
         {
             DestroyEffect(AddSpecialEffectTarget(mainEffect,actor,mainAttach));
-            DestroyEffect(AddSpecialEffectTarget(additionalEffect,actor,mainAttach));
         } 
 
         private method damageUnits()
@@ -137,6 +136,11 @@ library ProjectileSpikeLib
             this.damaged = null;
             this.gameObject = 0;
             this.actor = null;
+        }
+
+        public method getTime()->real
+        {
+            return this.lifetime;
         }
 
         public method fireProjectile(real x, real y, real facing)

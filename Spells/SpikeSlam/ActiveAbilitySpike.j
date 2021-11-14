@@ -82,12 +82,12 @@ library SpikeActiveAbilityLib
 
         public method onHit(unit target)
         {
-            BJDebugMsg("onHit");
+           
         }
 
         public method onKill(unit target)
         {
-            BJDebugMsg("onKill");
+           
         }
 
         public static method getObject(integer pid, integer rawCode)->thistype

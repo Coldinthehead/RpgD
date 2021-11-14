@@ -19,6 +19,10 @@ library UpdatePoolLib
                 {
                     list[i].update(deltaTime);
                     used +=1;
+                    if(list[i].getTime() <= 0)
+                    {
+                        list[i].destroy();
+                    }
                 }
             }
             //BJDebugMsg(I2S(i));
@@ -69,5 +73,6 @@ library UpdatePoolLib
     {
         method isUsing()->boolean;
         method update(real deltaTime);
+        method getTime()->real;
     }
 }

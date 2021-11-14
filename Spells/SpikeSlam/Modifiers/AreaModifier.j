@@ -8,8 +8,8 @@ library AreaModifierLib
             {
                ab.modifyAreaOvertime();
                ab.modifyProjectile(true);
-               ab.modifyMaxUnitCount();
                ab.modifyMultistrike(true);
+               ab.modifyMaxUnitCount();
             }
 
         }
