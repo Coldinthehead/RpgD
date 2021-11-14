@@ -5,9 +5,9 @@ library CastAbilityTriggers
     {
         integer pid = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
         integer abilityRawCode = GetSpellAbilityId();
-        real x = GetSpellTargetX();
-        real y = GetSpellTargetY();
-        PlayerEntity.instances[pid].cast(abilityRawCode,x,y);
+        real x = GetUnitX(GetTriggerUnit());
+        real y = GetUnitY(GetTriggerUnit());
+        PlayerEntity.instances[pid].cast(abilityRawCode,x,y,GetUnitFacing(GetTriggerUnit()));
     }
 
 

@@ -7,12 +7,9 @@ library PlayerLib
         unit actor;
         ActiveAbilityContainer castAbilityList;
 
-        public method cast(integer abilityRawCode,real x,real y)
+        public method cast(integer abilityRawCode,real x,real y,real facing)
         {
-            // BJDebugMsg("cast : ");
-            // BJDebugMsg(I2S(abilityRawCode));
-            // BJDebugMsg(R2S(x) + " / " + R2S(y));
-            castAbilityList.get(abilityRawCode).invoke(x,y);
+            castAbilityList.get(abilityRawCode).invoke(x,y,facing);
         }
 
         public method addAbility(AbilityData data)->boolean
@@ -25,6 +22,10 @@ library PlayerLib
             return isAdded;
         }
 
+        public method getActiveAbility(integer rawCode)->IActiveAbility
+        {
+           return castAbilityList.get(rawCode);
+        }
 
         public static method BuildPlayer(integer pid, unit actor)
         {

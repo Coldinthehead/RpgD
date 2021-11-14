@@ -23,20 +23,13 @@ library ActiveAbilityContainer
             if(index == -1)
             {
                 index = getFreeIndex();
-                BJDebugMsg("abilityAdded");
-                abilityList[index] = data.builder.build(this.pid);
+                abilityList[index] = data.builder.build(this.pid,data.abilityRawCode);
                 return true;
             }
             return false;
         }
 
-        public method Invoke(integer index, real x, real y)
-        {
-            IActiveAbility ab = abilityList[index];
-            ab.invoke(x,y);
-        }
-
-        private method contains(integer rawCode)->integer
+        public method contains(integer rawCode)->integer
         {
             integer i;
             for(i = 0; i < thistype.length;i+=1)

@@ -26,7 +26,8 @@ library UnitGrabageLib
                     time[i] -= 0.49;  
                     if(thistype.time[i] <0.)
                     {
-                        RemoveUnit(thistype.dummy[i]);
+                        //RemoveUnit(thistype.dummy[i]);
+                        //UnitPool.reuseUnit(thistype.dummy[i]);
                         thistype.time[i] = -1;
                         thistype.dummy[i] = null;
                     }
@@ -40,7 +41,6 @@ library UnitGrabageLib
                 }
                
             }
-            BJDebugMsg("used : " + I2S(used));
             if(used == 0)
             {
                 pauseCycle();
