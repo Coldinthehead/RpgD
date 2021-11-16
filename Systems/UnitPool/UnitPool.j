@@ -23,6 +23,12 @@ library UnitPool
             
         }
 
+        public static method reuse(unit u)
+        {
+            SetUnitX(u,0);
+            SetUnitY(u,0);
+        }
+
         public static method onInit()
         {
             integer i;

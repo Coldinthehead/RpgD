@@ -8,9 +8,9 @@ library SpikeAbilityBuilderLib
 
             real sizeOvetime = 1;
             real scale = 0.8;
-            integer maxUnitCount = 6; //6;
+            integer maxUnitCount = 5; //6;
             real radius = 100;
-            real lifetime =  0.6;
+            real lifetime =  0.8;
 
             spike.buildArea(sizeOvetime , scale ,  maxUnitCount, radius);
             spike.setLifeTime(lifetime);

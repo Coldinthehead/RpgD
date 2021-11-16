@@ -6,7 +6,11 @@ library PlayerLib
         integer pid;
         unit actor;
         ActiveAbilityContainer castAbilityList;
+        EquipableItemContainer equippedItemList;
 
+
+        // Actrive Ability
+        //==========================================================================================================
         public method cast(integer abilityRawCode,real x,real y,real facing)
         {
             castAbilityList.get(abilityRawCode).invoke(x,y,facing);
@@ -26,6 +30,40 @@ library PlayerLib
         {
            return castAbilityList.get(rawCode);
         }
+        //==========================================================================================================
+        //Equipable items
+        //===========================================================================================================
+        public method tryEquipItem(EquipableItemData data)->boolean
+        {
+            boolean canPick = data.slot.canPick(this.pid);
+            integer i;
+            data.slot.pick(this.pid);
+            if(canPick)
+            {
+                for(i = 0; i < EquipableItemData.statLength; i+=1)
+                {
+                    data.stat[i].addStat(this.pid);
+                }
+            }
+            return canPick;
+        }
+
+        public method dropItem(EquipableItemData data)->boolean
+        {
+            boolean canPick;
+            integer i;
+            data.slot.drop(this.pid);
+            canPick = data.slot.canPick(this.pid);
+            if(canPick)
+            {
+                for(i = 0; i < EquipableItemData.statLength; i+=1)
+                {
+                    data.stat[i].addStat(this.pid);
+                }
+            }
+            return canPick;
+        }
+        //============================================================================================================
 
         public static method BuildPlayer(integer pid, unit actor)
         {
@@ -33,6 +71,7 @@ library PlayerLib
             result.actor = actor;
             result.pid = pid;
             result.castAbilityList = ActiveAbilityContainer.getObject(pid);
+            result.equippedItemList = EquipableItemContainer.getObject(pid);
             thistype.instances[pid] = result;
         }
 

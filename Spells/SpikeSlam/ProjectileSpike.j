@@ -29,7 +29,9 @@ library ProjectileSpikeLib
             lifetime -= deltaTime;
             if(tick <= 0)
             {
+                //BJDebugMsg("tick" + R2S(tick));
                 createDummy();
+                tick = tickTime;
             }
             
             if(lifetime <= 0 ||currentUnitCount >= maxUnitCount )
@@ -122,7 +124,7 @@ library ProjectileSpikeLib
 
         public method modifyForMultistrike()
         {
-            delay = 0.7;
+            delay = 1;
         }
 
         public method reuse()
@@ -135,6 +137,7 @@ library ProjectileSpikeLib
             this.targets = null;
             this.damaged = null;
             this.gameObject = 0;
+            UnitPool.reuse(this.actor);
             this.actor = null;
         }
 
@@ -163,8 +166,8 @@ library ProjectileSpikeLib
             damaged = GroupPool.GetGroup(); // CreateGroup();
             targets = GroupPool.GetGroup(); // CreateGroup();
             isAlive = true;
-            tickTime = 0.08;
-            tick = tickTime;
+            tickTime = 0.07;
+            tick = 0;
             
         }
 
