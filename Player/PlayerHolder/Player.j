@@ -6,7 +6,8 @@ library PlayerLib
         integer pid;
         unit actor;
         ActiveAbilityContainer castAbilityList;
-        EquipableItemContainer equippedItemList;
+        SlotContainer equippedItemList;
+        BaseAttributeContainer stats;
 
 
         // Actrive Ability
@@ -64,14 +65,16 @@ library PlayerLib
             return canPick;
         }
         //============================================================================================================
-
+        //PlayerStats
+        //============================================================================================================
         public static method BuildPlayer(integer pid, unit actor)
         {
             thistype result = thistype.create();
             result.actor = actor;
             result.pid = pid;
             result.castAbilityList = ActiveAbilityContainer.getObject(pid);
-            result.equippedItemList = EquipableItemContainer.getObject(pid);
+            result.equippedItemList = SlotContainer.getObject(pid);
+            result.stats = BaseAttributeContainer.getObject(pid);
             thistype.instances[pid] = result;
         }
 

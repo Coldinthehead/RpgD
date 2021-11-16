@@ -1,6 +1,6 @@
-library EquipableItemContainerlib
+library SlotContainerlib
 {
-    public struct EquipableItemContainer
+    public struct SlotContainer
     {
         integer rightHand;
         integer leftHand;
