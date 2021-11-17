@@ -11,6 +11,8 @@ library AttributeContainerLib
         IStatComponent dex;
         IStatComponent intel;
 
+        
+   
         public static method getObject(integer pid)->thistype
         {
             thistype result = thistype.create();
