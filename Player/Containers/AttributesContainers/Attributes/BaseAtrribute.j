@@ -10,7 +10,6 @@ library BaseAtrributeLib
         {
             value +=amount;
             setTotalValue();
-            
         }
 
         public method addMultiplier(real amount)

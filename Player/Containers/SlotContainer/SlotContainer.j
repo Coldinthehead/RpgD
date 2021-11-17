@@ -20,7 +20,7 @@ library SlotContainerlib
             result.body = 0;
             result.ring = 0 ;
             result.cloak = 0 ;
-            result.pid  =pid;
+            result.pid = pid;
             return result;
         }
 

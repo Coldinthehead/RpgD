@@ -7,7 +7,7 @@ library PlayerLib
         unit actor;
         ActiveAbilityContainer castAbilityList;
         SlotContainer equippedItemList;
-        BaseAttributeContainer stats;
+        AttributeContainer stats;
 
 
         // Actrive Ability
@@ -59,7 +59,7 @@ library PlayerLib
             {
                 for(i = 0; i < EquipableItemData.statLength; i+=1)
                 {
-                    data.stat[i].addStat(this.pid);
+                    data.stat[i].removeStat(this.pid);
                 }
             }
             return canPick;
@@ -74,7 +74,7 @@ library PlayerLib
             result.pid = pid;
             result.castAbilityList = ActiveAbilityContainer.getObject(pid);
             result.equippedItemList = SlotContainer.getObject(pid);
-            result.stats = BaseAttributeContainer.getObject(pid);
+            result.stats = AttributeContainer.getObject(pid);
             thistype.instances[pid] = result;
         }
 

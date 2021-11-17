@@ -6,13 +6,18 @@ library AttackDamageStatLib
 
         public method addStat(integer pid)
         {
-           // PlayerEntity.instances[pid].stats.addAttackDamage(amoune);
-           BJDebugMsg("attack added");
+           //BJDebugMsg("stat added!");
+        //    if(PlayerEntity.instances[pid].stats.attackDamage == 0)
+        //    {
+        //        BJDebugMsg("null stats");
+        //    }
+           PlayerEntity.instances[pid].stats.attackDamage.addValue(amount);
         }
 
         public method removeStat(integer pid)
         {
-            BJDebugMsg("attack removed");
+            // BJDebugMsg("attack removed");
+            PlayerEntity.instances[pid].stats.attackDamage.addValue(-amount);
         }
 
         public static method getObject(real amount)->thistype

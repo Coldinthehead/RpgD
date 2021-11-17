@@ -2,8 +2,8 @@ library UpdatePoolLib
 {
     public struct UpdatePool
     {
-        static IUpdateable list[200];
-        static integer CACHE_SIZE = 200;
+        static IUpdateable list[1000];
+        static integer CACHE_SIZE = 1000;
         static timer updateTimer;
         static real deltaTime;
         static integer iteratorIndex;
