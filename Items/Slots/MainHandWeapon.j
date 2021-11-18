@@ -10,13 +10,11 @@ library MainHandWeaponSlotLib
         public method pick(integer pid)
         {
             PlayerEntity.instances[pid].equippedItemList.rightHand +=1;
-            BJDebugMsg("item Picked! slotVariable : " + I2S(PlayerEntity.instances[pid].equippedItemList.rightHand));
         }
 
         public method drop(integer pid)
         {
             PlayerEntity.instances[pid].equippedItemList.rightHand -=1;
-            BJDebugMsg("item Dropped! slotVariable : " + I2S(PlayerEntity.instances[pid].equippedItemList.rightHand));
 
         }
 
