@@ -1,6 +1,6 @@
 library AttributeWithAbilityComponentLib
 {
-    public struct AttributeWithAbilityComponent extends IStatComponent
+    public struct AttributeWithAbilityComponent extends IMinorAttribute
     {
         integer pid;
         BaseAttribute numericValue;

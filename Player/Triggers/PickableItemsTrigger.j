@@ -30,6 +30,7 @@ library ItemPickTriggers
                 }
             } 
         }
+        currentItemType = null;
     }
 
     function onDropItem()

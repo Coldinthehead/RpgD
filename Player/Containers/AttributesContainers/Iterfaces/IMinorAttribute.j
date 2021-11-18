@@ -1,6 +1,6 @@
-library IStatComponentLib
+library IMinorAttributeLib
 {
-    public interface IStatComponent
+    public interface IMinorAttribute
     {
         method getValue()->real;
         method getMultiplier()->real;

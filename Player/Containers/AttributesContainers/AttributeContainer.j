@@ -4,12 +4,12 @@ library AttributeContainerLib
     {
         integer pid;
 
-        IStatComponent attackDamage;
-        IStatComponent attackSpeed;
-        IStatComponent armour;
-        IStatComponent str;
-        IStatComponent dex;
-        IStatComponent intel;
+        IMinorAttribute attackDamage;
+        IMinorAttribute attackSpeed;
+        IMinorAttribute armour;
+        IMinorAttribute str;
+        IMinorAttribute dex;
+        IMinorAttribute intel;
 
         
    
