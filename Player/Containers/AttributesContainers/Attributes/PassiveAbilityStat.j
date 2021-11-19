@@ -22,6 +22,22 @@ library PassiveAbilityStatLib
             }
         }
 
+        public method overrideMonsterAbility(unit u , integer value)
+        {
+            integer i;
+            integer power = MAX_POWER;
+            for(i =12;i> -1;i-=1)
+            {
+                UnitRemoveAbility(u,this.abilityRawCode[i]);
+                if(value - power >= 0)
+                {
+                    UnitAddAbility(u,this.abilityRawCode[i]);
+                    value -= power;
+                }
+                power = power / 2;
+            }
+        }
+
         public static method getObject(integer pid)->thistype 
         {
             thistype result = thistype.create();
