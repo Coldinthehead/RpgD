@@ -4,12 +4,7 @@ library WoodZoneHolderLib
     {
         static boolean isActive;
         static SpawnPosition spawnPosition;
-
-        static WoodMonsterData woodMonsterData;
-
         static group woodMonsterGroup;
-
-
         static boolean isInitialized;
 
         public static method clearZone()
@@ -27,7 +22,7 @@ library WoodZoneHolderLib
 
         public static method createMonsters(integer level)
         {
-            MonsterData template =  woodMonsterData.getSingleMonsterTemplate(level);
+            MonsterData template =  MonsterTemplate.getMonsterTemlateForWood(level);
             MonsterProvider.createMonsters(woodMonsterGroup,spawnPosition,template);
         }
 
@@ -76,8 +71,6 @@ library WoodZoneHolderLib
            // initSpawnPosition();
             thistype.spawnPosition = SpawnPosition.getObject();
             thistype.spawnPosition.setRect(gg_rct_WoodRect);
-            woodMonsterData = WoodMonsterData.getObject();
-            woodMonsterData.addTemplateById(0);
             woodMonsterGroup = CreateGroup();
         }
         static method onInit()
