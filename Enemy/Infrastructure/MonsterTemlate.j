@@ -25,8 +25,8 @@ library MonsterTemplateLib
             //spiders
             data[0] = MonsterData.getObject();
 
-            data[0].health = 120.;
-            data[0].damage = 8.;
+            data[0].health = 70.;
+            data[0].damage = 5.;
             data[0].armour = 1;
             data[0].level = 2;
 
@@ -44,12 +44,12 @@ library MonsterTemplateLib
 
             data[1] = MonsterData.getObject();
 
-            data[1].health = 200;
-            data[1].damage = 14;
+            data[1].health = 160;
+            data[1].damage = 12;
             data[1].armour = 1;
             data[1].level = 4;
 
-            data[1].scale = 0.5;
+            data[1].scale = 0.7;
             data[1].minPackSize = 3;
             data[1].maxPackSize = 5;
 

@@ -81,8 +81,8 @@ library HeroChoserLib
     {
         initTimer = CreateTimer();
         TimerStart(initTimer,0.5,false,function onInitTimer);
-        HeroStartX = 0.0;
-        HeroStartY = 0.0;
+        HeroStartX = 10500;
+        HeroStartY = 6024;
         HERO_UNIT_RAWCODE[0] = 'H000';
         HERO_UNIT_RAWCODE[1] = 'H000';
         HERO_UNIT_RAWCODE[2] = 'H000';
