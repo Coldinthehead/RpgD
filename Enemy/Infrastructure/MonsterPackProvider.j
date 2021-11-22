@@ -39,6 +39,7 @@ library MonsterProviderLib requires SetUnitMaxState
             setMonsterHealth(u,template.health);
             setMonsterDamage(u,template.damage);
             setMonsterArmour(u,template.armour);
+            BJDebugMsg("Unit id : " + I2S(GetHandleId(u)));
             return u;
         }
 
@@ -52,6 +53,7 @@ library MonsterProviderLib requires SetUnitMaxState
             setMonsterHealth(u,template.health * magicMonsterMultiplier );
             setMonsterDamage(u,template.damage * magicMonsterMultiplier );
             setMonsterArmour(u,template.armour * magicMonsterMultiplier );
+            BJDebugMsg("Unit id : " + I2S(GetHandleId(u)));
             return u;
         }
 
@@ -65,6 +67,7 @@ library MonsterProviderLib requires SetUnitMaxState
             setMonsterHealth(u,template.health * rareMonsterMultiplier );
             setMonsterDamage(u,template.damage * rareMonsterMultiplier );
             setMonsterArmour(u,template.armour * rareMonsterMultiplier );
+            BJDebugMsg("Unit id : " + I2S(GetHandleId(u)));
             return u;
 
         }

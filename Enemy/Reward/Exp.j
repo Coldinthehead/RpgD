@@ -28,7 +28,7 @@ library ExpLib
                     exp = 1;
                 }
                 AddHeroXP(n, R2I(exp), true);
-                BJDebugMsg("Gained + " +  R2S(exp));
+                BJDebugMsg("unit : " + I2S(GetHandleId(GetTriggerUnit())));
             }
             GroupRemoveUnit(g,n);
             n = FirstOfGroup(g);

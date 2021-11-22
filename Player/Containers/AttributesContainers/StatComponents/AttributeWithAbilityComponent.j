@@ -17,7 +17,6 @@ library AttributeWithAbilityComponentLib
         method addValue(real value)
         {
             numericValue.addValue(value);
-            BJDebugMsg("current value : " + R2S(numericValue.getValue()));
             overrideAbility();
         }
         method addMultiplier(real multiplier)

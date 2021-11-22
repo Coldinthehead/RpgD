@@ -31,27 +31,6 @@ library ComponentBuilderLib
             result.abilityValue.setAttackSpeedCodes();
             return result;
         }
-
-        public static method buildStrComponent(integer pid)->IMinorAttribute
-        {
-            AttributeWithAbilityComponent result = thistype.buildDefaultComponent(pid);
-            result.abilityValue.setStrCodes();
-            return result;
-        }
-
-        public static method buildDexComponent(integer pid)->IMinorAttribute
-        {
-            AttributeWithAbilityComponent result = thistype.buildDefaultComponent(pid);
-            result.abilityValue.setDexCodes();
-            return result;
-        }
-
-        public static method buildIntCodes(integer pid)->IMinorAttribute
-        {
-            AttributeWithAbilityComponent result = thistype.buildDefaultComponent(pid);
-            result.abilityValue.setIntCodes();
-            return result;
-        }
         
     }
 }

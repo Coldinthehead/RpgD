@@ -7,9 +7,11 @@ library AttributeContainerLib
         IMinorAttribute attackDamage;
         IMinorAttribute attackSpeed;
         IMinorAttribute armour;
-        IMinorAttribute str;
-        IMinorAttribute dex;
-        IMinorAttribute intel;
+        IMinorAttribute health;
+        IMinorAttribute mana;
+        MajorAttribute str;
+        MajorAttribute dex;
+        MajorAttribute intel;
 
         
    
@@ -20,9 +22,22 @@ library AttributeContainerLib
             result.attackDamage = ComponentBuilder.buildAttackDamageComponent(pid);
             result.attackSpeed = ComponentBuilder.buildAttackSpeedComponent(pid);
             result.armour = ComponentBuilder.buildArmourComponent(pid);
-            result.str = ComponentBuilder.buildStrComponent(pid);
-            result.dex = ComponentBuilder.buildDexComponent(pid);
-            result.intel = ComponentBuilder.buildIntCodes(pid);
+
+            result.health = StateStat.getObject(pid,UNIT_STATE_MAX_LIFE);
+            result.mana = StateStat.getObject(pid,UNIT_STATE_MAX_MANA);
+
+            result.str = MajorAttribute.getObject(pid);
+            result.str.abilityValue.setStrCodes();
+            result.str.addMofidier(HealthFromStr.getObject(result.health));
+            result.str.addMofidier(AttackDamageFromStr.getObject(result.attackDamage));
+
+
+            result.dex = MajorAttribute.getObject(pid);
+            result.dex.abilityValue.setDexCodes();
+
+            result.intel = MajorAttribute.getObject(pid);
+            result.intel.abilityValue.setIntCodes();
+            result.intel.addMofidier(ManaFromInt.getObject(result.mana));
 
             return result;
         }   

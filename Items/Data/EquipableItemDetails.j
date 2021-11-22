@@ -20,9 +20,18 @@ library EquipableItemDetailsLib
 
         static method onInit()
         {
-            data[0] = EquipableItemData.getObject('I000');
+            data[0] = EquipableItemData.getObject('I001');
             data[0].slot = OneHandedWeapon.getObject();
-            data[0].stat[0] = AttackDamageStat.getObject(45);
+            data[0].stat[0] = AttackDamageStat.getObject(35);
+            data[0].stat[1] = StrStat.getObject(20);
+
+            data[1] = EquipableItemData.getObject('I002');
+            data[1].slot = OneHandedWeapon.getObject();
+            data[1].stat[0] = AttackDamageStat.getObject(65);
+
+            data[2] = EquipableItemData.getObject('I003');
+            data[2].slot = OneHandedWeapon.getObject();
+            data[2].stat[0] = AttackDamageStat.getObject(110);
             // data[0].stat[1] = ArmourStat.getObject(rand);
             // data[0].stat[2] = AttackSpeedStat.getObject(rand);
             // data[0].stat[3] = StrStat.getObject(rand);
