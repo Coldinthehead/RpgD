@@ -9,6 +9,11 @@ library AttributeContainerLib
         IMinorAttribute armour;
         IMinorAttribute health;
         IMinorAttribute mana;
+
+        IMinorAttribute attackEvasion;
+        IMinorAttribute attackCritChance;
+        IMinorAttribute attackCritDamage;
+
         MajorAttribute str;
         MajorAttribute dex;
         MajorAttribute intel;
@@ -22,6 +27,14 @@ library AttributeContainerLib
             result.attackDamage = ComponentBuilder.buildAttackDamageComponent(pid);
             result.attackSpeed = ComponentBuilder.buildAttackSpeedComponent(pid);
             result.armour = ComponentBuilder.buildArmourComponent(pid);
+
+            result.attackEvasion = NumeriAttribute.getObject(pid);
+
+            result.attackCritChance = NumeriAttribute.getObject(pid);
+            result.attackCritChance.addValue(5);
+
+            result.attackCritDamage = NumeriAttribute.getObject(pid);
+            result.attackCritDamage.addValue(150);
 
             result.health = StateStat.getObject(pid,UNIT_STATE_MAX_LIFE);
             result.mana = StateStat.getObject(pid,UNIT_STATE_MAX_MANA);

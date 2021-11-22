@@ -10,12 +10,12 @@ library IntModifiersLib
         }
         public method onRemove(real amount)
         {
-            attribute.addValue((amount * 5);
+            attribute.addValue(amount * 5);
         }
 
         public method modifyValue(real amount)
         {
-            attribute.addValue((amount * 5);
+            attribute.addValue(amount * 5);
         }
 
 

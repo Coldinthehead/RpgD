@@ -4,6 +4,7 @@ library WoodZoneLib
     {
         static boolean isInitialized = false;
         static boolean isActive = false;
+        static boolean canClear = false;
 
         static SpawnPosition spawnPoints;
         static MonsterHolder monsterHolder;
@@ -13,20 +14,37 @@ library WoodZoneLib
 
         public static method onPlayerEnter(unit actor)
         {
-
+            playerCountInside += 1;
+            if(isInitialized == false)
+            {
+                thistype.initialize();
+                isInitialized = true;
+            }
+            if(isActive == false)
+            {
+                thistype.spawnMonsters();
+            }
         }
 
         public static method onPlayerExit(unit actor)
         {
-
+            playerCountInside -= 1;
+            if(playerCountInside == 0)
+            {
+                if(canClear)
+                {
+                    thistype.clearLocation();
+                }
+            }
         }
 
-        public method spawnMonsters()
+        public static method spawnMonsters()
         {
-
+            MonsterCreator.createMonstersInWoodZone(monsterHolder,spawnPoints);
+            isActive = true;
         }
 
-        public method clearLocation()
+        public static method clearLocation()
         {
             if(isActive == false)
             {

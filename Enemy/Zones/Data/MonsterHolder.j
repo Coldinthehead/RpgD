@@ -39,7 +39,6 @@ library MonsterHolderLib
             RemoveUnit(this.actor);
             actor = null;
             hashcode = 0;
-
         }
 
         public static method getObject(unit actor, integer hashcode)->thistype
