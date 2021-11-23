@@ -20,14 +20,14 @@ library TownTriggersLib
 
     function onInit()
     {
-        trigger townToWood = CreateTrigger();
-        trigger woodToTown = CreateTrigger();
+        // trigger townToWood = CreateTrigger();
+        // trigger woodToTown = CreateTrigger();
 
-        TriggerRegisterEnterRectSimple( townToWood, gg_rct_TownToWood );
-        TriggerAddAction( townToWood, function onRectEnterTownToWood);
+        // TriggerRegisterEnterRectSimple( townToWood, gg_rct_TownToWood );
+        // TriggerAddAction( townToWood, function onRectEnterTownToWood);
 
-        TriggerRegisterEnterRectSimple(  woodToTown , gg_rct_WoodToTown);
-        TriggerAddAction( woodToTown, function onRectEnterWoodToTown);
+        // TriggerRegisterEnterRectSimple(  woodToTown , gg_rct_WoodToTown);
+        // TriggerAddAction( woodToTown, function onRectEnterWoodToTown);
         
     }
 }
