@@ -1,86 +1,60 @@
-library WoodZoneLib 
+library InstanceZoneLib 
 {
-    public struct WoodZone
+    public struct InstanceZone
     {
-        static boolean isInitialized = false;
-        static boolean isActive = false;
-        static boolean canClear = false;
+        boolean isActive;
+        boolean canClear;
 
-        static SpawnPosition spawnPoints;
-        static MonsterHolder monsterHolder;
+        SpawnPosition spawnPoints;
+        MonsterHolder monsterHolder;
         
-        static integer playerCountInside = 0;
+        integer playerCountInside;
+
+        integer minLevel;
 
 
-        public static method onRectEnterTownToWood()
+        public method onPlayerEnter(unit actor)
         {
-            if(IsUnitType(GetTriggerUnit(), UNIT_TYPE_HERO) == true)
-            {
-                thistype.onPlayerEnter(GetTriggerUnit());
-                SetUnitX(GetTriggerUnit(),-2500);
-                SetUnitY(GetTriggerUnit(),14977);
-                IssueImmediateOrder( GetTriggerUnit(), "stop" );
-            }
-          
-        }
-
-        public static method onRectEnterWoodToTown()
-        {
-            if(IsUnitType(GetTriggerUnit(), UNIT_TYPE_HERO) == true)
-            {
-                thistype.onPlayerExit(GetTriggerUnit());
-                SetUnitX(GetTriggerUnit(),10527);
-                SetUnitY(GetTriggerUnit(),5100);
-                IssueImmediateOrder( GetTriggerUnit(), "stop" );
-            }
-           
-        }
-
-        public static method onPlayerEnter(unit actor)
-        {
-            playerCountInside += 1;
-            if(isInitialized == false)
-            {
-                thistype.initialize();
-                isInitialized = true;
-            }
+            playerCountInside+=1;
+            BJDebugMsg(I2S(playerCountInside) + " pcinside");
             if(isActive == false)
             {
-                thistype.spawnMonsters();
+                spawnMonsters();
+                isActive = true;
             }
         }
 
-        public static method onPlayerExit(unit actor)
+        public method onPlayerExit(unit actor)
         {
             playerCountInside -= 1;
+            BJDebugMsg("OnPLayerExt;" + I2S(playerCountInside));
             if(playerCountInside == 0)
-            {
-                if(thistype.checkCanBeCleared())
+            {   BJDebugMsg("playerConut =0");
+                if(checkCanBeCleared())
                 {
-                  thistype.clearLocation();
-
+                    BJDebugMsg("cleartingLocation");
+                  clearLocation();
                 }
                 
             }
         }
 
-        private static method checkCanBeCleared()->boolean
+        private method checkCanBeCleared()->boolean
         {
             return monsterHolder.canBeCleared();
         }
 
-        public static method spawnMonsters()
+        public method spawnMonsters()
         {
             MonsterCreator.createMonstersInWoodZone(monsterHolder,spawnPoints);
-            isActive = true;
         }
 
-        public static method onEnemyDies(unit u)
+        public method onEnemyDies(unit u)
         {
-            thistype.monsterHolder.onMonsterDie(GetHandleId(u));
+           monsterHolder.onMonsterDie(GetHandleId(u));
         }
 
-        public static method clearLocation()
+        public  method clearLocation()
         {
             if(isActive == false)
             {
@@ -90,25 +64,17 @@ library WoodZoneLib
             isActive = false;
         }
 
-        public static method initialize()
+        public static method getObject(rect r,integer minLevel)->thistype
         {
-            thistype.isActive = false;
-            thistype.spawnPoints = SpawnPosition.getObject();
-            thistype.spawnPoints.setRect(gg_rct_WoodRect);
-            thistype.monsterHolder = MonsterHolder.getObject();
+            thistype result = thistype.create();
+            result.isActive = false;
+            result.canClear = false;
+            result.playerCountInside = 0;
+            result.minLevel = minLevel;
+            result.spawnPoints = SpawnPosition.getObject();
+            result.spawnPoints.setRect(r);
+            result.monsterHolder = MonsterHolder.getObject();
+            return result;
         }
-
-        static method onInit()
-        {
-            trigger townToWood = CreateTrigger();
-            trigger woodToTown = CreateTrigger();
-
-            TriggerRegisterEnterRectSimple( townToWood, gg_rct_TownToWood );
-            TriggerAddAction( townToWood, function thistype.onRectEnterTownToWood);
-
-            TriggerRegisterEnterRectSimple(  woodToTown , gg_rct_WoodToTown);
-            TriggerAddAction( woodToTown, function thistype.onRectEnterWoodToTown);
-        }
-
     }
 }

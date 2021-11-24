@@ -9,7 +9,7 @@ library MonsterCreatorLib requires SetUnitMaxState
             for( i = 0; i < points.length; i+=1)
             {
                 thistype.createMonsterPack(points.x[i], points.y[i],holder,template);
-                BJDebugMsg("holder length : " + I2S(holder.length));
+               // BJDebugMsg("holder length : " + I2S(holder.length));
             }
         }
 

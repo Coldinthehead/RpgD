@@ -6,7 +6,11 @@ library EnemyMonsterDieEventLib
        ExpReward.onMonsterDie();
        if(RectContainsCoords(gg_rct_WoodRect,GetUnitX(GetTriggerUnit()) , GetUnitY(GetTriggerUnit())) )
        {
-           WoodZone.onEnemyDies(GetTriggerUnit());
+           InstanceHolder.getInstanceByTag(InstanceTag.WOOD).onEnemyDies(GetTriggerUnit());
+       }
+       else if(RectContainsCoords(gg_rct_Swamp,GetUnitX(GetTriggerUnit()) , GetUnitY(GetTriggerUnit())))
+       {
+           InstanceHolder.getInstanceByTag(InstanceTag.SWAMP).onEnemyDies(GetTriggerUnit());
        }
     }
     
