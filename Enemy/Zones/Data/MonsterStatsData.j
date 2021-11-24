@@ -5,9 +5,9 @@ library MonsterStatsDataLib
        static MonsterStatsTemplate templateList[20];
        static integer templateListLength = 20;
 
-       public static method getTemplateForWoodZone()->MonsterStatsTemplate
+       public static method getTemplateForWoodZone(integer index)->MonsterStatsTemplate
        {
-           return templateList[0];
+           return templateList[index];
        }
 
        static method onInit()
