@@ -18,10 +18,10 @@ library MonsterHolderLib
             if(index != -1)
             {
                 died +=1;
-                BJDebugMsg("died :  " + I2S(died) + " / " + I2S(length));
+               // BJDebugMsg("died :  " + I2S(died) + " / " + I2S(length));
                 if(this.canBeCleared())
                 {
-                    BJDebugMsg("location can be reused");
+                   BJDebugMsg("location can be reused");
                 }
             }
         }

@@ -12,26 +12,26 @@ library ExpLib
         static real differenceMultiplier = 0.2;
     }
 
-        static method  onMonsterDie()
+        static method  onMonsterDie(unit u)
         {
             group g = CreateGroup();
             unit n;
             real exp;
-            GroupEnumUnitsInRange(g,GetUnitX(GetTriggerUnit()),GetUnitY(GetTriggerUnit()),2000,null);
+            GroupEnumUnitsInRange(g,GetUnitX(u),GetUnitY(u),2000,null);
             n = FirstOfGroup(g);
             while(n != null)
             {
                 if(IsUnitType(n, UNIT_TYPE_HERO) == true)
                 {
-                    exp = GetRandomInt(minExp,maxExp) + (GetUnitLevel(GetTriggerUnit()) * expPerMonsterLevel);
-                    exp += exp*  (differenceMultiplier * (GetUnitLevel(GetTriggerUnit()) - GetUnitLevel(n)));
+                    exp = GetRandomInt(minExp,maxExp) + (GetUnitLevel(u) * expPerMonsterLevel);
+                    exp += exp*  (differenceMultiplier * (GetUnitLevel(u) - GetUnitLevel(n)));
                     exp *=  (100 - GetUnitLevel(n)) / 100;
                     if(exp <= 0)
                     {
                         exp = 1;
                     }
                     AddHeroXP(n, R2I(exp), true);
-                    BJDebugMsg("unit : " + I2S(GetHandleId(GetTriggerUnit())));
+                   // BJDebugMsg("unit : " + I2S(GetHandleId(u)));
                 }
                 GroupRemoveUnit(g,n);
                 n = FirstOfGroup(g);

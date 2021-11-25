@@ -3,15 +3,8 @@ library EnemyMonsterDieEventLib
 
     public function onMonsterDie()
     {
-       ExpReward.onMonsterDie();
-       if(RectContainsCoords(gg_rct_WoodRect,GetUnitX(GetTriggerUnit()) , GetUnitY(GetTriggerUnit())) )
-       {
-           InstanceHolder.getInstanceByTag(InstanceTag.WOOD).onEnemyDies(GetTriggerUnit());
-       }
-       else if(RectContainsCoords(gg_rct_Swamp,GetUnitX(GetTriggerUnit()) , GetUnitY(GetTriggerUnit())))
-       {
-           InstanceHolder.getInstanceByTag(InstanceTag.SWAMP).onEnemyDies(GetTriggerUnit());
-       }
+       ExpReward.onMonsterDie(GetTriggerUnit());
+       InstanceHolder.removeUnit(GetTriggerUnit());
     }
     
     function onInit()

@@ -5,18 +5,23 @@ library InstanceZoneLib
         boolean isActive;
         boolean canClear;
 
+        rect rec;
+
         SpawnPosition spawnPoints;
         MonsterHolder monsterHolder;
         
         integer playerCountInside;
 
         integer minLevel;
+        integer maxLevel;
+
+        integer templateIndex;
 
 
         public method onPlayerEnter(unit actor)
         {
             playerCountInside+=1;
-            BJDebugMsg(I2S(playerCountInside) + " pcinside");
+            //BJDebugMsg(I2S(playerCountInside) + " pcinside");
             if(isActive == false)
             {
                 spawnMonsters();
@@ -27,12 +32,13 @@ library InstanceZoneLib
         public method onPlayerExit(unit actor)
         {
             playerCountInside -= 1;
-            BJDebugMsg("OnPLayerExt;" + I2S(playerCountInside));
+            //BJDebugMsg("OnPLayerExt;" + I2S(playerCountInside));
             if(playerCountInside == 0)
-            {   BJDebugMsg("playerConut =0");
+            {   
+                //BJDebugMsg("playerConut =0");
                 if(checkCanBeCleared())
                 {
-                    BJDebugMsg("cleartingLocation");
+                    //BJDebugMsg("cleartingLocation");
                   clearLocation();
                 }
                 
@@ -46,7 +52,7 @@ library InstanceZoneLib
 
         public method spawnMonsters()
         {
-            MonsterCreator.createMonstersInWoodZone(monsterHolder,spawnPoints);
+            MonsterCreator.createMonstersInWoodZone(monsterHolder,spawnPoints,getTemplate());
         }
 
         public method onEnemyDies(unit u)
@@ -64,16 +70,31 @@ library InstanceZoneLib
             isActive = false;
         }
 
-        public static method getObject(rect r,integer minLevel)->thistype
+        public method setTemplateIndex(integer index)
+        {
+            templateIndex = index;
+        }
+
+        private method getTemplate()->MonsterStatsTemplate
+        {
+            return MonsterStatsData.templateList[templateIndex];
+        }
+
+        public method contains(unit u)->boolean
+        {
+            return RectContainsCoords(this.rec,GetUnitX(u),GetUnitY(u));
+        }
+
+        public static method getObject(rect r)->thistype
         {
             thistype result = thistype.create();
             result.isActive = false;
             result.canClear = false;
             result.playerCountInside = 0;
-            result.minLevel = minLevel;
             result.spawnPoints = SpawnPosition.getObject();
             result.spawnPoints.setRect(r);
             result.monsterHolder = MonsterHolder.getObject();
+            result.rec = r;
             return result;
         }
     }

@@ -2,10 +2,9 @@ library MonsterCreatorLib requires SetUnitMaxState
 {
     public struct MonsterCreator
     {
-        public static method createMonstersInWoodZone(SpawnPosition points,MonsterHolder holder)
+        public static method createMonstersInWoodZone(SpawnPosition points,MonsterHolder holder,MonsterStatsTemplate template)
         {
             integer i;
-            MonsterStatsTemplate template = MonsterStatsData.getTemplateForWoodZone();
             for( i = 0; i < points.length; i+=1)
             {
                 thistype.createMonsterPack(points.x[i], points.y[i],holder,template);
