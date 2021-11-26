@@ -27,6 +27,10 @@ library HeroChoserLib
        // UnitAddItem(PlayerEntity.instances[pid].actor,CreateItem(STARTING_ITEM_RAWCODE[unitType],GetUnitX(heroPlayer[pid]),GetUnitY(heroPlayer[pid])));
         //@TODO some camera?
         AdjustPlayerStateBJ(STARTING_GOLD, Player(pid), PLAYER_STATE_RESOURCE_GOLD );
+        if(unitType == 0)
+        {
+           PlayerEntity.instances[pid].stats.SetFighter();
+        }
     }
     
     function onPlayerDialogChose()

@@ -5,6 +5,7 @@ library EnemyMonsterDieEventLib
     {
        ExpReward.onMonsterDie(GetTriggerUnit());
        InstanceHolder.removeUnit(GetTriggerUnit());
+       DropRewardHolder.createDropFromUnit(GetTriggerUnit(),GetPlayerId(GetOwningPlayer(GetKillingUnit())));
     }
     
     function onInit()

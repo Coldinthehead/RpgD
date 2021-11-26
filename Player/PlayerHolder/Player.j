@@ -10,6 +10,12 @@ library PlayerLib
         AttributeContainer stats;
 
 
+        // //======poweruups
+        public method pickPowerup(IPowerUpItem consumable)
+        {
+            consumable.onPick(pid);
+        }
+
         // Actrive Ability
         //==========================================================================================================
         public method cast(integer abilityRawCode,real x,real y,real facing)
@@ -77,6 +83,8 @@ library PlayerLib
             result.stats = AttributeContainer.getObject(pid);
             thistype.instances[pid] = result;
         }
+
+       
 
     }
 }

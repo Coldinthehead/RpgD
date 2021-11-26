@@ -18,6 +18,22 @@ library AttributeContainerLib
         MajorAttribute dex;
         MajorAttribute intel;
 
+        private boolean startChosen;
+
+        public method SetFighter()
+        {
+            if(startChosen == true)
+            {
+                return;
+            }
+            health.addValue(100);
+            mana.addValue(20);
+            str.addValue(4);
+            dex.addValue(4);
+            intel.addValue(2);
+            startChosen = true;
+        }
+
         
    
         public static method getObject(integer pid)->thistype
@@ -43,6 +59,8 @@ library AttributeContainerLib
             result.str.abilityValue.setStrCodes();
             result.str.addMofidier(HealthFromStr.getObject(result.health));
             result.str.addMofidier(AttackDamageFromStr.getObject(result.attackDamage));
+            
+            
 
 
             result.dex = MajorAttribute.getObject(pid);
@@ -52,6 +70,7 @@ library AttributeContainerLib
             result.intel.abilityValue.setIntCodes();
             result.intel.addMofidier(ManaFromInt.getObject(result.mana));
 
+            result.startChosen = false;
             return result;
         }   
     }

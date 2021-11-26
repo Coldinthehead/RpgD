@@ -30,6 +30,12 @@ library ItemPickTriggers
                 }
             } 
         }
+        else if (currentItemType == ITEM_TYPE_POWERUP)
+        {
+            BJDebugMsg("item type powerUp!");
+            PlayerEntity.instances[pid].pickPowerup(PowerUpItemDetails.getPowerUpByRawCode(GetItemTypeId(GetManipulatedItem())));
+        }
+        
         currentItemType = null;
     }
 
