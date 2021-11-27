@@ -10,6 +10,8 @@ library AttributeContainerLib
         IMinorAttribute health;
         IMinorAttribute mana;
 
+        IMinorAttribute healthRegen;
+
         IMinorAttribute attackEvasion;
         IMinorAttribute attackCritChance;
         IMinorAttribute attackCritDamage;
@@ -26,11 +28,12 @@ library AttributeContainerLib
             {
                 return;
             }
-            health.addValue(100);
-            mana.addValue(20);
+            health.addValue(149);
+            mana.addValue(29);
             str.addValue(4);
             dex.addValue(4);
             intel.addValue(2);
+            healthRegen.addValue(2);
             startChosen = true;
         }
 
@@ -43,6 +46,7 @@ library AttributeContainerLib
             result.attackDamage = ComponentBuilder.buildAttackDamageComponent(pid);
             result.attackSpeed = ComponentBuilder.buildAttackSpeedComponent(pid);
             result.armour = ComponentBuilder.buildArmourComponent(pid);
+            result.healthRegen = ComponentBuilder.buildHealthRegenComponent(pid);
 
             result.attackEvasion = NumeriAttribute.getObject(pid);
 

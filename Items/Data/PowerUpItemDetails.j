@@ -20,7 +20,7 @@ library PowerUpItemsLib
 
         static method onInit()
         {
-            dataList[0] = PowerUpItemData.getObject('I00C', HealthSphere.getObject());
+            dataList[0] = PowerUpItemData.getObject('I00C',HealthSphere.getObject());
             dataList[1] = PowerUpItemData.getObject('I00D',GoldCoin.getObject(10));
             dataList[2] = PowerUpItemData.getObject('I00B',ManaSphere.getObject());
         }

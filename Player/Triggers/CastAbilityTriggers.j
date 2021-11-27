@@ -3,13 +3,23 @@ library CastAbilityTriggers
 
     function onActiveAbilityCast()
     {
-        integer pid = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        integer abilityRawCode = GetSpellAbilityId();
-        integer abilityDataId = AbilityItemDetails.getIndexByAbilityRawCode(abilityRawCode);
-        integer targetType = AbilityItemDetails.data[abilityDataId].targetType;
+        integer pid ;
+        integer abilityRawCode;
+        integer abilityDataId;
+        integer targetType;
+        real x;
+        real y;
 
-        real x = 0; //= GetUnitX(GetTriggerUnit());
-        real y = 0; //= GetUnitY(GetTriggerUnit());
+        if(GetUnitTypeId(GetTriggerUnit()) == 'h004')
+        {
+            BJDebugMsg("Statuja castit");
+            return;
+        }
+
+        pid  = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
+        abilityRawCode  = GetSpellAbilityId();
+        abilityDataId = AbilityItemDetails.getIndexByAbilityRawCode(abilityRawCode);
+        targetType = AbilityItemDetails.data[abilityDataId].targetType;
         
         if(targetType == ABILITY_TARGET_TYPE.MELEE_HIT)
         {

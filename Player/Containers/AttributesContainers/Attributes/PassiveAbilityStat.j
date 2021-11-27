@@ -98,6 +98,15 @@ library PassiveAbilityStatLib
                 this.abilityRawCode[i] = AbilityRawCodeHolder.attackSpeedCodes[i];
             }
         }
+
+        public method setHealthRegenCodes()
+        {
+            integer i;
+            for(i = 0 ; i < 13; i+=1)
+            {
+                this.abilityRawCode[i] = AbilityRawCodeHolder.healthRegenCodes[i];
+            }
+        }
         
 
     }
@@ -110,6 +119,7 @@ library PassiveAbilityStatLib
         static integer dexCodes[12];
         static integer intCodes[12];
         static integer attackSpeedCodes[12];
+        static integer healthRegenCodes[12];
 
         static method onInit()
         {
@@ -191,7 +201,19 @@ library PassiveAbilityStatLib
             thistype.intCodes[10] = 'A01Z';
             thistype.intCodes[11] = 'A020';
 
-        }
+            thistype.healthRegenCodes[0] = 'A024';
+            thistype.healthRegenCodes[1] = 'A025';
+            thistype.healthRegenCodes[2] = 'A026';
+            thistype.healthRegenCodes[3] = 'A027';
+            thistype.healthRegenCodes[4] = 'A028';
+            thistype.healthRegenCodes[5] = 'A029';
+            thistype.healthRegenCodes[6] = 'A02A';
+            thistype.healthRegenCodes[7] = 'A02B';
+            thistype.healthRegenCodes[8] = 'A02C';
+            thistype.healthRegenCodes[9] = 'A02D';
+            thistype.healthRegenCodes[10] = 'A02E';
+             thistype.healthRegenCodes[11] = 'A02F';
+      }
         
     }
 }

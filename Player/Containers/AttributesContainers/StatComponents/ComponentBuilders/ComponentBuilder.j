@@ -31,6 +31,13 @@ library ComponentBuilderLib
             result.abilityValue.setAttackSpeedCodes();
             return result;
         }
+
+        public static method buildHealthRegenComponent(integer pid)->IMinorAttribute
+        {
+            AttributeWithAbilityComponent result = thistype.buildDefaultComponent(pid);
+            result.abilityValue.setHealthRegenCodes();
+            return result;
+        }
         
     }
 }

@@ -19,7 +19,7 @@ library MonsterStatsDataLib
         templateList[0].level = 2;
         templateList[0].packSize = 3;
 
-        templateList[0].health = 70;
+        templateList[0].health = 50;
         templateList[0].attackDamage = 4;
         templateList[0].armour = 0;
         templateList[0].attackSpeed =0;
@@ -38,7 +38,7 @@ library MonsterStatsDataLib
         templateList[1].level = 4;
         templateList[1].packSize = 3;
 
-        templateList[1].health = 150;
+        templateList[1].health = 120;
         templateList[1].attackDamage = 6;
         templateList[1].armour = 0;
         templateList[1].attackSpeed = 0;
@@ -57,7 +57,7 @@ library MonsterStatsDataLib
         templateList[2].level = 6;
         templateList[2].packSize = 3;
 
-        templateList[2].health = 250;
+        templateList[2].health = 200;
         templateList[2].attackDamage = 9;
         templateList[2].armour = 1;
         templateList[2].attackSpeed = 0;
@@ -76,7 +76,7 @@ library MonsterStatsDataLib
         templateList[3].level = 8;
         templateList[3].packSize = 3;
 
-        templateList[3].health = 450;
+        templateList[3].health = 350;
         templateList[3].attackDamage = 14;
         templateList[3].armour = 2;
         templateList[3].attackSpeed = 0;
