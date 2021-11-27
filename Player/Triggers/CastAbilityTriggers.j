@@ -3,8 +3,8 @@ library CastAbilityTriggers
 
     function onActiveAbilityCast()
     {
-        integer pid ;
-        integer abilityRawCode;
+        integer pid = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
+        integer abilityRawCode = GetSpellAbilityId();
         integer abilityDataId;
         integer targetType;
         real x;
@@ -12,12 +12,9 @@ library CastAbilityTriggers
 
         if(GetUnitTypeId(GetTriggerUnit()) == 'h004')
         {
-            BJDebugMsg("Statuja castit");
+            ButtonDetails.onButtonDown(pid,abilityRawCode);
             return;
         }
-
-        pid  = GetPlayerId(GetOwningPlayer(GetTriggerUnit()));
-        abilityRawCode  = GetSpellAbilityId();
         abilityDataId = AbilityItemDetails.getIndexByAbilityRawCode(abilityRawCode);
         targetType = AbilityItemDetails.data[abilityDataId].targetType;
         

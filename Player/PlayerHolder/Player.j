@@ -8,6 +8,7 @@ library PlayerLib
         ActiveAbilityContainer castAbilityList;
         SlotContainer equippedItemList;
         AttributeContainer stats;
+        AbilityTalentsContainer talents;
 
 
         // //======poweruups
@@ -81,6 +82,7 @@ library PlayerLib
             result.castAbilityList = ActiveAbilityContainer.getObject(pid);
             result.equippedItemList = SlotContainer.getObject(pid);
             result.stats = AttributeContainer.getObject(pid);
+            result.talents = AbilityTalentsContainer.getObject();
             thistype.instances[pid] = result;
         }
 
